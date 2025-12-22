@@ -1,338 +1,897 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minturn Magic</title>
-  <meta name="description" content="Minturn the Magician offers professional, family-friendly magic shows in Ohio. Perfect for wineries, birthday parties, corporate events, and community celebrations." />
-  <meta name="keywords" content="magician Ohio, family magician, winery entertainment, birthday party magician, stage magic, Minturn Magic" />
-  <meta property="og:title" content="Minturn Magic – Professional Magician" />
-  <meta property="og:description" content="Book Minturn the Magician for unforgettable, family-friendly magic shows across Ohio." />
-  <meta property="og:type" content="website" />
-  <style>
-    :root {
-      --bg: #f2f2f2;
-      --bg-alt: #ffffff;
-      --text: #222;
-      --muted: #666;
-      --accent-yellow: #f4c430;
-      --accent-red: #c0392b;
-      --accent-blue: #1f6fb2;
-      --card: #ffffff;
-      --shadow: rgba(0,0,0,0.08);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minturn Magic – Professional Magician</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    [data-theme="dark"] {
-      --bg: #121212;
-      --bg-alt: #1c1c1c;
-      --text: #f2f2f2;
-      --muted: #aaa;
-      --card: #1f1f1f;
-      --shadow: rgba(0,0,0,0.4);
-    }
+        :root {
+            --deep-purple: #1a0a2e;
+            --rich-purple: #2d1b4e;
+            --gold-accent: #d4af37;
+            --soft-gold: #f4e5c3;
+            --text-light: #f8f4f0;
+            --text-muted: #c4b8a8;
+        }
 
-    * { box-sizing: border-box; }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, #16213e 50%, var(--rich-purple) 100%);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 300;
+        }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    header {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
-      color: white;
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 12px var(--shadow);
-    }
+        .smoke-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
 
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
+        .smoke {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            animation: float 25s infinite ease-in-out;
+            opacity: 0;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 1.25rem;
-    }
+        .smoke:nth-child(1) {
+            top: -10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
 
-    .brand img {
-      height: 48px;
-      width: auto;
-    }
+        .smoke:nth-child(2) {
+            top: 50%;
+            right: 5%;
+            animation-delay: 8s;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-      font-weight: 500;
-    }
+        .smoke:nth-child(3) {
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 16s;
+        }
 
-    nav a:hover { text-decoration: underline; }
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(40px, -80px) scale(1.15);
+                opacity: 0.5;
+            }
+            75% {
+                opacity: 0.3;
+            }
+        }
 
-    .toggle {
-      background: rgba(255,255,255,0.2);
-      border: none;
-      color: white;
-      padding: 0.4rem 0.75rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(20px);
+            background: rgba(26, 10, 46, 0.3);
+        }
 
-    section {
-      padding: 4rem 1.25rem;
-    }
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            letter-spacing: 2px;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
 
-    h1, h2, h3 {
-      line-height: 1.2;
-    }
+        nav a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 2rem;
-    }
+        nav a:hover {
+            color: var(--gold-accent);
+        }
 
-    .hero {
-      background: radial-gradient(circle at top, #ffffff, var(--bg));
-      text-align: center;
-      padding-top: 5rem;
-    }
+        .hero {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 6rem 5% 5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    [data-theme="dark"] .hero {
-      background: radial-gradient(circle at top, #1f1f1f, var(--bg));
-    }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold-accent);
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
+        .tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.15s backwards;
+        }
 
-    .hero p {
-      max-width: 720px;
-      margin: 0 auto 2rem;
-      color: var(--muted);
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .cta {
-      display: inline-block;
-      background: var(--accent-yellow);
-      color: #000;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 6px 18px var(--shadow);
-    }
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: linear-gradient(135deg, var(--gold-accent), #b8941f);
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
 
-    .gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px var(--shadow);
-    }
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--gold-accent);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
 
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 10px 30px var(--shadow);
-    }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
 
-    .card h3 {
-      margin-top: 0;
-      color: var(--accent-blue);
-    }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
 
-    form {
-      display: grid;
-      gap: 1rem;
-      max-width: 520px;
-    }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
 
-    input, textarea, select {
-      padding: 0.65rem 0.75rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 1rem;
-    }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-    [data-theme="dark"] input,
-    [data-theme="dark"] textarea,
-    [data-theme="dark"] select {
-      background: #2a2a2a;
-      color: var(--text);
-      border-color: #444;
-    }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
 
-    button {
-      background: var(--accent-blue);
-      color: white;
-      border: none;
-      padding: 0.75rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 600;
-    }
+        .shows {
+            background: rgba(45, 27, 78, 0.25);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
-    footer {
-      background: var(--bg-alt);
-      padding: 2rem 1.25rem;
-      text-align: center;
-      color: var(--muted);
-    }
+        .show-card {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
-    footer a { color: var(--accent-blue); }
+        .show-card:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.2rem; }
-      nav { display: none; }
-    }
-  </style>
+        .show-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .show-card p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .contact-section {
+            background: rgba(26, 10, 46, 0.4);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .contact-detail {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        .phone-number {
+            color: var(--gold-accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: all;
+        }
+
+        .phone-number:hover {
+            text-decoration-color: var(--gold-accent);
+        }
+
+        .mobile-contact-buttons {
+            display: none;
+        }
+
+        .mobile-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.8rem;
+            margin: 0.4rem 0.4rem 0.4rem 0;
+            background: linear-gradient(135deg, var(--gold-accent), #b8941f);
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .mobile-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.5px;
+            font-weight: 400;
+        }
+
+        input, textarea, select {
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--rich-purple);
+            color: var(--text-light);
+            padding: 0.5rem;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold-accent);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--gold-accent), #b8941f);
+            color: var(--deep-purple);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            text-align: center;
+            padding: 0.85rem;
+            border-radius: 12px;
+            display: none;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(76, 175, 80, 0.15);
+            color: #90ee90;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(244, 67, 54, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .social-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.7rem 1.8rem;
+            background: rgba(59, 89, 152, 0.8);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 89, 152, 0.25);
+            font-weight: 300;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 89, 152, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 89, 152, 0.4);
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2.5rem 5% 8rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .bottom-smoke-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .bottom-smoke {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: rise 15s infinite ease-in-out;
+        }
+
+        .bottom-smoke:nth-child(1) {
+            left: 10%;
+            bottom: -100px;
+            animation-delay: 0s;
+        }
+
+        .bottom-smoke:nth-child(2) {
+            left: 30%;
+            bottom: -120px;
+            animation-delay: 3s;
+        }
+
+        .bottom-smoke:nth-child(3) {
+            left: 50%;
+            bottom: -110px;
+            animation-delay: 6s;
+        }
+
+        .bottom-smoke:nth-child(4) {
+            left: 70%;
+            bottom: -130px;
+            animation-delay: 9s;
+        }
+
+        .bottom-smoke:nth-child(5) {
+            left: 85%;
+            bottom: -100px;
+            animation-delay: 12s;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-150px) translateX(30px) scale(1.2);
+                opacity: 0.5;
+            }
+            80% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-250px) translateX(-20px) scale(0.9);
+                opacity: 0;
+            }
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 0.85rem 1.8rem;
+            background: rgba(76, 175, 80, 0.95);
+            color: white;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: flex-end;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 4rem 5% 3rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .desktop-contact-info {
+                display: none;
+            }
+
+            .mobile-contact-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .shows, .contact-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            select option {
+                background: var(--rich-purple);
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <div class="brand">
-        <img src="https://ibb.co/gM7D7r4V" alt="Minturn Magic Logo" />
-        <span>Minturn Magic</span>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#gallery">Photos</a>
-        <a href="#shows">Recent Shows</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="toggle" onclick="toggleTheme()">Light / Dark</button>
+    <div class="smoke-container">
+        <div class="smoke"></div>
+        <div class="smoke"></div>
+        <div class="smoke"></div>
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Minturn the Magician</h1>
-      <p>Professional, family‑friendly magic shows filled with wonder, laughter, and unforgettable moments. Perfect for wineries, inns, community events, and private parties.</p>
-      <a class="cta" href="#contact">Request a Show</a>
-    </div>
-  </section>
+    <header>
+        <div class="logo">Minturn Magic</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#gallery">Photos</a>
+            <a href="#shows">Shows</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <section id="gallery">
-    <div class="container">
-      <h2>Showcase</h2>
-      <div class="gallery">
-        <img src="images/show1.jpg" alt="Minturn performing magic at a live event" />
-        <img src="images/show2.jpg" alt="Outdoor family-friendly magic show" />
-        <img src="images/show3.jpg" alt="Magic props and illusions on stage" />
-        <img src="images/show4.jpg" alt="Audience participation magic trick" />
-        <img src="images/show5.jpg" alt="Levitation illusion performance" />
-        <img src="images/show6.jpg" alt="Finale of a magic show" />
-      </div>
-      <p style="font-size:0.9rem;color:var(--muted)">📸 Image fix: Place your photos inside an <code>/images</code> folder next to this HTML file and rename them to match the filenames above.</p>
-    </div>
-  </section>
+    <section class="hero" id="about">
+        <h1>Minturn the Magician</h1>
+        <p class="tagline">Professional, family‑friendly magic shows filled with wonder, laughter, and unforgettable moments. Perfect for wineries, inns, community events, and private parties.</p>
+        <a href="#contact" class="cta-button">Request a Show</a>
+    </section>
 
-  <section id="shows">
-    <div class="container">
-      <h2>Recent Shows</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Firelands Winery</h3>
-          <p>Elegant close‑up and stage magic paired perfectly with wine‑tasting guests.</p>
+    <section id="gallery">
+        <h2>Showcase</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/show1.jpg" alt="Minturn performing magic at a live event">
+            </div>
+            <div class="gallery-item">
+                <img src="images/show2.jpg" alt="Outdoor family-friendly magic show">
+            </div>
+            <div class="gallery-item">
+                <img src="images/show3.jpg" alt="Magic props and illusions on stage">
+            </div>
+            <div class="gallery-item">
+                <img src="images/show4.jpg" alt="Audience participation magic trick">
+            </div>
+            <div class="gallery-item">
+                <img src="images/show5.jpg" alt="Levitation illusion performance">
+            </div>
+            <div class="gallery-item">
+                <img src="images/show6.jpg" alt="Finale of a magic show">
+            </div>
         </div>
-        <div class="card">
-          <h3>Catawba Inn</h3>
-          <p>A lively evening of family‑friendly illusions and audience participation.</p>
+    </section>
+
+    <section id="shows">
+        <div class="shows">
+            <h2>Recent Shows</h2>
+            <div class="show-card">
+                <h3>Firelands Winery</h3>
+                <p>Elegant close‑up and stage magic paired perfectly with wine‑tasting guests.</p>
+            </div>
+            <div class="show-card">
+                <h3>Catawba Inn</h3>
+                <p>A lively evening of family‑friendly illusions and audience participation.</p>
+            </div>
+            <div class="show-card">
+                <h3>Ohio Veterans Home</h3>
+                <p>A heartfelt performance bringing smiles, amazement, and shared memories.</p>
+            </div>
         </div>
-        <div class="card">
-          <h3>Ohio Veterans Home</h3>
-          <p>A heartfelt performance bringing smiles, amazement, and shared memories.</p>
+    </section>
+
+    <section id="contact">
+        <div class="contact-section">
+            <h2>Contact & Booking</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    
+                    <div class="desktop-contact-info">
+                        <div class="contact-detail">
+                            <strong>Phone:</strong> <span class="phone-number" onclick="copyToClipboard('7405717055')">(740) 571-7055</span>
+                        </div>
+                        <div class="contact-detail">
+                            <strong>Email:</strong> minturn.bryon@yahoo.com
+                        </div>
+                    </div>
+
+                    <div class="mobile-contact-buttons">
+                        <a href="tel:7405717055" class="mobile-button">
+                            📞 Call Now
+                        </a>
+                        <a href="sms:7405717055" class="mobile-button">
+                            💬 Send Text
+                        </a>
+                        <div class="contact-detail" style="margin-top: 1rem; text-align: center;">
+                            <strong>Email:</strong> minturn.bryon@yahoo.com
+                        </div>
+                    </div>
+
+                    <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank" class="social-link">
+                        Follow on Facebook
+                    </a>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-status" id="formStatus"></div>
+                    
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Contact</label>
+                        <select id="reason" name="reason" required>
+                            <option value="">Select an option</option>
+                            <option value="Request a Show">Request a Show</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Request</button>
+                </form>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Minturn Magic. All rights reserved.</p>
+    </footer>
+
+    <div class="bottom-smoke-container">
+        <div class="bottom-smoke"></div>
+        <div class="bottom-smoke"></div>
+        <div class="bottom-smoke"></div>
+        <div class="bottom-smoke"></div>
+        <div class="bottom-smoke"></div>
     </div>
-  </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact & Booking</h2>
-      <p>Call or text <strong>(740) 571‑7055</strong> or email <strong>minturn.bryon@yahoo.com</strong></p>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <select name="reason" required>
-          <option value="">Reason for Contact</option>
-          <option>Request a Show</option>
-          <option>General Inquiry</option>
-        </select>
-        <input type="date" id="eventDate" name="event_date" />
-        <textarea rows="4" name="message" placeholder="Tell me about your event..."></textarea>
-        <button type="submit">Send Request</button>
-      </form>
-      <p style="font-size:0.9rem;color:var(--muted)">Form powered by Formspree. Replace <code>YOUR_FORM_ID</code> with your actual Formspree ID.</p>
-      <p style="margin-top:1.5rem">Follow on Facebook: <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank">Minturn the Magician</a></p>
-    </div>
-  </section>
+    <div class="copy-notification" id="copyNotification">Phone number copied!</div>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Minturn Magic. All rights reserved.</p>
-  </footer>
+    <script>
+        function copyToClipboard(text) {
+            const formattedNumber = '(' + text.slice(0,3) + ') ' + text.slice(3,6) + '-' + text.slice(6);
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(formattedNumber).then(() => {
+                    showCopyNotification();
+                }).catch(() => {
+                    fallbackCopy(formattedNumber);
+                });
+            } else {
+                fallbackCopy(formattedNumber);
+            }
+        }
 
-  <script>
-    const root = document.documentElement;
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) root.setAttribute('data-theme', storedTheme);
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopyNotification();
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        }
 
-    function toggleTheme() {
-      const current = root.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
 
-    const dateInput = document.getElementById('eventDate');
-    if (dateInput) {
-      const min = new Date();
-      min.setMonth(min.getMonth() + 1);
-      const max = new Date();
-      max.setFullYear(max.getFullYear() + 2);
-      dateInput.min = min.toISOString().split('T')[0];
-      dateInput.max = max.toISOString().split('T')[0];
-    }
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('formStatus');
+            const submitButton = e.target.querySelector('.submit-button');
+            
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formStatus.style.display = 'none';
+            
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: 'c61c4fa0-85dc-41c1-be7c-edc534fcc305',
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                        reason: formData.get('reason'),
+                        message: formData.get('message')
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                    formStatus.className = 'form-status success';
+                    e.target.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Sorry, there was an error. Please try again or contact us directly.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Request';
+            }
+        });
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Google Calendar booking link -->
-  <!-- Create a Google Appointment Schedule and paste its public booking URL below -->
-  <!-- Example: https://calendar.google.com/calendar/u/0/appointments/schedules/XXXX -->
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
