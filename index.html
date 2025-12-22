@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minturn Magic</title>
-  <meta name="description" content="Minturn the Magician – Professional family-friendly magic shows for all ages. Book Minturn Magic for your next event." />
+  <meta name="description" content="Minturn the Magician offers professional, family-friendly magic shows in Ohio. Perfect for wineries, birthday parties, corporate events, and community celebrations." />
+  <meta name="keywords" content="magician Ohio, family magician, winery entertainment, birthday party magician, stage magic, Minturn Magic" />
+  <meta property="og:title" content="Minturn Magic – Professional Magician" />
+  <meta property="og:description" content="Book Minturn the Magician for unforgettable, family-friendly magic shows across Ohio." />
+  <meta property="og:type" content="website" />
   <style>
     :root {
       --bg: #f2f2f2;
@@ -246,13 +250,14 @@
     <div class="container">
       <h2>Showcase</h2>
       <div class="gallery">
-        <img src="/mnt/data/20230902_125343.jpg" alt="Minturn performing magic" />
-        <img src="/mnt/data/20230902_125406.jpg" alt="Outdoor magic show" />
-        <img src="/mnt/data/20251116_134115.jpg" alt="Magic props" />
-        <img src="/mnt/data/FB_IMG_1756674130651.jpg" alt="Stage illusion" />
-        <img src="/mnt/data/FB_IMG_1756674219931.jpg" alt="Levitation illusion" />
-        <img src="/mnt/data/FB_IMG_1756674236318.jpg" alt="Assistant reveal" />
+        <img src="images/show1.jpg" alt="Minturn performing magic at a live event" />
+        <img src="images/show2.jpg" alt="Outdoor family-friendly magic show" />
+        <img src="images/show3.jpg" alt="Magic props and illusions on stage" />
+        <img src="images/show4.jpg" alt="Audience participation magic trick" />
+        <img src="images/show5.jpg" alt="Levitation illusion performance" />
+        <img src="images/show6.jpg" alt="Finale of a magic show" />
       </div>
+      <p style="font-size:0.9rem;color:var(--muted)">📸 Image fix: Place your photos inside an <code>/images</code> folder next to this HTML file and rename them to match the filenames above.</p>
     </div>
   </section>
 
@@ -280,18 +285,19 @@
     <div class="container">
       <h2>Contact & Booking</h2>
       <p>Call or text <strong>(740) 571‑7055</strong> or email <strong>minturn.bryon@yahoo.com</strong></p>
-      <form onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <select required>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <select name="reason" required>
           <option value="">Reason for Contact</option>
           <option>Request a Show</option>
           <option>General Inquiry</option>
         </select>
-        <input type="date" id="eventDate" />
-        <textarea rows="4" placeholder="Tell me about your event..."></textarea>
+        <input type="date" id="eventDate" name="event_date" />
+        <textarea rows="4" name="message" placeholder="Tell me about your event..."></textarea>
         <button type="submit">Send Request</button>
       </form>
+      <p style="font-size:0.9rem;color:var(--muted)">Form powered by Formspree. Replace <code>YOUR_FORM_ID</code> with your actual Formspree ID.</p>
       <p style="margin-top:1.5rem">Follow on Facebook: <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank">Minturn the Magician</a></p>
     </div>
   </section>
@@ -312,15 +318,8 @@
       localStorage.setItem('theme', next);
     }
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      alert('Thank you! Your message has been received.');
-      e.target.reset();
-    }
-
     const dateInput = document.getElementById('eventDate');
     if (dateInput) {
-      const now = new Date();
       const min = new Date();
       min.setMonth(min.getMonth() + 1);
       const max = new Date();
@@ -331,5 +330,9 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <!-- Google Calendar booking link -->
+  <!-- Create a Google Appointment Schedule and paste its public booking URL below -->
+  <!-- Example: https://calendar.google.com/calendar/u/0/appointments/schedules/XXXX -->
 </body>
 </html>
