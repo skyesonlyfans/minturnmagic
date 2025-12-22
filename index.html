@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minturn Magic</title>
+  <meta name="description" content="Minturn the Magician – Professional family-friendly magic shows for all ages. Book Minturn Magic for your next event." />
+  <style>
+    :root {
+      --bg: #f2f2f2;
+      --bg-alt: #ffffff;
+      --text: #222;
+      --muted: #666;
+      --accent-yellow: #f4c430;
+      --accent-red: #c0392b;
+      --accent-blue: #1f6fb2;
+      --card: #ffffff;
+      --shadow: rgba(0,0,0,0.08);
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --bg-alt: #1c1c1c;
+      --text: #f2f2f2;
+      --muted: #aaa;
+      --card: #1f1f1f;
+      --shadow: rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: white;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .brand img {
+      height: 48px;
+      width: auto;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: 500;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    section {
+      padding: 4rem 1.25rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top, #ffffff, var(--bg));
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    [data-theme="dark"] .hero {
+      background: radial-gradient(circle at top, #1f1f1f, var(--bg));
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent-yellow);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--accent-blue);
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      max-width: 520px;
+    }
+
+    input, textarea, select {
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    [data-theme="dark"] input,
+    [data-theme="dark"] textarea,
+    [data-theme="dark"] select {
+      background: #2a2a2a;
+      color: var(--text);
+      border-color: #444;
+    }
+
+    button {
+      background: var(--accent-blue);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--bg-alt);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--accent-blue); }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="https://ibb.co/gM7D7r4V" alt="Minturn Magic Logo" />
+        <span>Minturn Magic</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Photos</a>
+        <a href="#shows">Recent Shows</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="toggle" onclick="toggleTheme()">Light / Dark</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Minturn the Magician</h1>
+      <p>Professional, family‑friendly magic shows filled with wonder, laughter, and unforgettable moments. Perfect for wineries, inns, community events, and private parties.</p>
+      <a class="cta" href="#contact">Request a Show</a>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <h2>Showcase</h2>
+      <div class="gallery">
+        <img src="/mnt/data/20230902_125343.jpg" alt="Minturn performing magic" />
+        <img src="/mnt/data/20230902_125406.jpg" alt="Outdoor magic show" />
+        <img src="/mnt/data/20251116_134115.jpg" alt="Magic props" />
+        <img src="/mnt/data/FB_IMG_1756674130651.jpg" alt="Stage illusion" />
+        <img src="/mnt/data/FB_IMG_1756674219931.jpg" alt="Levitation illusion" />
+        <img src="/mnt/data/FB_IMG_1756674236318.jpg" alt="Assistant reveal" />
+      </div>
+    </div>
+  </section>
+
+  <section id="shows">
+    <div class="container">
+      <h2>Recent Shows</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Firelands Winery</h3>
+          <p>Elegant close‑up and stage magic paired perfectly with wine‑tasting guests.</p>
+        </div>
+        <div class="card">
+          <h3>Catawba Inn</h3>
+          <p>A lively evening of family‑friendly illusions and audience participation.</p>
+        </div>
+        <div class="card">
+          <h3>Ohio Veterans Home</h3>
+          <p>A heartfelt performance bringing smiles, amazement, and shared memories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact & Booking</h2>
+      <p>Call or text <strong>(740) 571‑7055</strong> or email <strong>minturn.bryon@yahoo.com</strong></p>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <select required>
+          <option value="">Reason for Contact</option>
+          <option>Request a Show</option>
+          <option>General Inquiry</option>
+        </select>
+        <input type="date" id="eventDate" />
+        <textarea rows="4" placeholder="Tell me about your event..."></textarea>
+        <button type="submit">Send Request</button>
+      </form>
+      <p style="margin-top:1.5rem">Follow on Facebook: <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank">Minturn the Magician</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Minturn Magic. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) root.setAttribute('data-theme', storedTheme);
+
+    function toggleTheme() {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Your message has been received.');
+      e.target.reset();
+    }
+
+    const dateInput = document.getElementById('eventDate');
+    if (dateInput) {
+      const now = new Date();
+      const min = new Date();
+      min.setMonth(min.getMonth() + 1);
+      const max = new Date();
+      max.setFullYear(max.getFullYear() + 2);
+      dateInput.min = min.toISOString().split('T')[0];
+      dateInput.max = max.toISOString().split('T')[0];
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
