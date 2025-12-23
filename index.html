@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minturn Magic – Professional Magician</title>
-    <meta name="description" content="Professional, family-friendly magic shows for wineries, inns, community events, and private parties.">
+    <meta name="description" content="Professional magic shows filled with wonder, laughter, and unforgettable moments. Perfect for businesses, community events, and parties.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
@@ -117,11 +117,9 @@
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--gold-accent);
-            letter-spacing: 2px;
+            height: 60px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav {
@@ -157,7 +155,7 @@
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--gold-accent);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             animation: fadeInUp 1s ease;
         }
 
@@ -205,7 +203,7 @@
             position: relative;
             z-index: 10;
             padding: 4rem 5%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -221,7 +219,7 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 2.5rem;
         }
@@ -233,7 +231,8 @@
             border-radius: 8px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.5rem;
         }
 
         .gallery-item:hover {
@@ -243,12 +242,12 @@
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
         .shows {
@@ -593,6 +592,10 @@
         }
 
         @media (max-width: 768px) {
+            .logo {
+                height: 50px;
+            }
+
             nav {
                 flex-direction: column;
                 gap: 0.8rem;
@@ -645,7 +648,7 @@
     </div>
 
     <header>
-        <div class="logo">Minturn Magic</div>
+        <img src="./images/logo.png" alt="Minturn Magic" class="logo">
         <nav>
             <a href="#about">About</a>
             <a href="#gallery">Photos</a>
@@ -656,7 +659,7 @@
 
     <section class="hero" id="about">
         <h1>Minturn the Magician</h1>
-        <p class="tagline">Professional, magic shows filled with wonder, laughter, and unforgettable moments. Perfect for businesses, families, community events, and private parties.</p>
+        <p class="tagline">Professional magic shows filled with wonder, laughter, and unforgettable moments. Perfect for businesses, community events, and parties.</p>
         <a href="#contact" class="cta-button">Request a Show</a>
     </section>
 
@@ -667,19 +670,34 @@
                 <img src="./images/1.jpg" alt="Minturn performing magic at a live event" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="./images/2.jpg" alt="Outdoor family-friendly magic show" loading="lazy">
+                <img src="./images/2.jpg" alt="Magic show performance" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="./images/4.jpg" alt="Magic props and illusions on stage" loading="lazy">
+                <img src="./images/4.jpg" alt="Magic props and illusions" loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="./images/5.jpg" alt="Audience participation magic trick" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="./images/6.jpg" alt="Levitation illusion performance" loading="lazy">
+                <img src="./images/6.jpg" alt="Live magic performance" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="./images/7.jpg" alt="Finale of a magic show" loading="lazy">
+                <img src="./images/7.jpg" alt="Magic show entertainment" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/8.jpg" alt="Professional magic performance" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/9.jpg" alt="Stage magic show" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/10.jpg" alt="Magic entertainment event" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/11.jpg" alt="Close-up magic performance" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/12.jpg" alt="Magic show finale" loading="lazy">
             </div>
         </div>
     </section>
