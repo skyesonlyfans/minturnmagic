@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minturn Magic – Professional Magician</title>
+    <meta name="description" content="Professional, family-friendly magic shows for wineries, inns, community events, and private parties.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,7 +19,6 @@
             --deep-purple: #1a0a2e;
             --rich-purple: #2d1b4e;
             --gold-accent: #d4af37;
-            --soft-gold: #f4e5c3;
             --text-light: #f8f4f0;
             --text-muted: #c4b8a8;
         }
@@ -136,7 +136,6 @@
             text-decoration: none;
             letter-spacing: 1px;
             transition: color 0.3s ease;
-            position: relative;
         }
 
         nav a:hover {
@@ -234,6 +233,7 @@
             border-radius: 8px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .gallery-item:hover {
@@ -635,12 +635,6 @@
                 padding: 2rem 1.5rem;
             }
         }
-
-        @media (prefers-color-scheme: dark) {
-            select option {
-                background: var(--rich-purple);
-            }
-        }
     </style>
 </head>
 <body>
@@ -670,22 +664,22 @@
         <h2>Showcase</h2>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/show1.jpg" alt="Minturn performing magic at a live event">
+                <img src="./images/1.jpg" alt="Minturn performing magic at a live event" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="images/show2.jpg" alt="Outdoor family-friendly magic show">
+                <img src="./images/2.jpg" alt="Outdoor family-friendly magic show" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="images/show3.jpg" alt="Magic props and illusions on stage">
+                <img src="./images/4.jpg" alt="Magic props and illusions on stage" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="images/show4.jpg" alt="Audience participation magic trick">
+                <img src="./images/5.jpg" alt="Audience participation magic trick" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="images/show5.jpg" alt="Levitation illusion performance">
+                <img src="./images/6.jpg" alt="Levitation illusion performance" loading="lazy">
             </div>
             <div class="gallery-item">
-                <img src="images/show6.jpg" alt="Finale of a magic show">
+                <img src="./images/7.jpg" alt="Finale of a magic show" loading="lazy">
             </div>
         </div>
     </section>
@@ -737,7 +731,7 @@
                         </div>
                     </div>
 
-                    <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank" class="social-link">
+                    <a href="https://www.facebook.com/share/16kDPCppik/" target="_blank" rel="noopener noreferrer" class="social-link">
                         Follow on Facebook
                     </a>
                 </div>
@@ -747,17 +741,17 @@
                     
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required autocomplete="name">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required autocomplete="email">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone (Optional)</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" autocomplete="tel">
                     </div>
 
                     <div class="form-group">
@@ -856,7 +850,7 @@
                         access_key: 'c61c4fa0-85dc-41c1-be7c-edc534fcc305',
                         name: formData.get('name'),
                         email: formData.get('email'),
-                        phone: formData.get('phone'),
+                        phone: formData.get('phone') || 'Not provided',
                         reason: formData.get('reason'),
                         message: formData.get('message')
                     })
