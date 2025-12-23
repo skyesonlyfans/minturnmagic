@@ -117,10 +117,11 @@
         }
 
         .logo {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-        }
+  width: clamp(200px, 30vw, 400px); /* Scales between 200px and 400px based on viewport */
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}   
 
         nav {
             display: flex;
@@ -648,7 +649,6 @@
     </div>
 
     <header>
-        <img src="./images/logo.png" alt="Minturn Magic" class="logo">
         <nav>
             <a href="#about">About</a>
             <a href="#gallery">Photos</a>
